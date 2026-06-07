@@ -11,18 +11,12 @@
     <link rel="stylesheet" href="css/cosmic.css">
 </head>
 <body>
-    <!-- Starfield -->
     <div id="starfield" class="starfield"></div>
-    
-    <!-- Particle Canvas -->
     <canvas id="particleCanvas"></canvas>
-    
-    <!-- Questions Container (hidden initially) -->
     <div id="questionsContainer" class="questions-container hidden"></div>
     
-    <!-- Main Container -->
     <div id="mainContainer" class="container">
-        <!-- Boot Terminal -->
+        <!-- Boot -->
         <section id="bootTerminal" class="section boot-terminal active">
             <div class="terminal">
                 <div class="terminal-header">
@@ -31,173 +25,177 @@
                     <span class="terminal-button green"></span>
                 </div>
                 <div class="terminal-content">
-                    <div class="terminal-line">$ SYSTEM INITIALIZING...</div>
+                    <div class="terminal-line">$ recovering deleted files...</div>
                     <div class="terminal-line" id="bootLine1"></div>
                     <div class="terminal-line" id="bootLine2"></div>
                     <div class="terminal-line" id="bootLine3"></div>
                     <div class="terminal-line" id="bootLine4"></div>
                     <div class="terminal-line" id="bootLine5"></div>
-                    <div class="terminal-line" id="bootLine6"></div>
                     <div class="terminal-line cursor" id="bootCursor"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Open Archive Button -->
+        <!-- Open -->
         <section id="openArchiveSection" class="section hidden">
             <div class="button-container">
-                <button id="openArchiveBtn" class="action-button">[ OPEN ARCHIVE ]</button>
+                <button id="openArchiveBtn" class="action-button">open</button>
             </div>
         </section>
 
-        <!-- File Explorer -->
+        <!-- Files -->
         <section id="fileExplorer" class="section hidden">
             <div class="explorer-header">
-                <h2>ARCHIVE_STRUCTURE.exe</h2>
+                <h2>directory</h2>
                 <div class="explorer-tabs">
-                    <span class="tab active">Tree View</span>
-                    <span class="close">×</span>
+                    <span class="close">x</span>
                 </div>
             </div>
             <div class="file-tree" id="fileTree">
-                <div class="folder-item">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-name">conversations/</span>
-                    <div class="subfolder">
-                        <div class="file-item clickable" data-file="conv-001">
-                            <span class="file-icon">📄</span>
-                            <span class="file-name">early_connection.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="conv-002">
-                            <span class="file-icon">📄</span>
-                            <span class="file-name">building_trust.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="conv-003">
-                            <span class="file-icon">📄</span>
-                            <span class="file-name">confusing_moments.txt</span>
-                        </div>
-                    </div>
+                <div class="file-item clickable" data-file="conv-001">
+                    <span class="file-icon">></span>
+                    <span class="file-name">first_message.log</span>
                 </div>
                 
-                <div class="folder-item">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-name">questions/</span>
-                    <div class="subfolder">
-                        <div class="file-item clickable" data-file="q-001">
-                            <span class="file-icon">❓</span>
-                            <span class="file-name">were_you_real.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="q-002">
-                            <span class="file-icon">❓</span>
-                            <span class="file-name">did_you_care.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="q-003">
-                            <span class="file-icon">❓</span>
-                            <span class="file-name">was_it_real.txt</span>
-                        </div>
-                    </div>
+                <div class="file-item clickable" data-file="conv-002">
+                    <span class="file-icon">></span>
+                    <span class="file-name">when_things_changed.log</span>
                 </div>
                 
-                <div class="folder-item">
-                    <span class="folder-icon">📁</span>
-                    <span class="folder-name">identity/</span>
-                    <div class="subfolder">
-                        <div class="file-item clickable" data-file="id-001">
-                            <span class="file-icon">👤</span>
-                            <span class="file-name">account_001.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="id-002">
-                            <span class="file-icon">👤</span>
-                            <span class="file-name">account_002.txt</span>
-                        </div>
-                        <div class="file-item clickable" data-file="id-003">
-                            <span class="file-icon">👤</span>
-                            <span class="file-name">account_003.txt</span>
-                        </div>
-                    </div>
+                <div class="file-item clickable" data-file="conv-003">
+                    <span class="file-icon">></span>
+                    <span class="file-name">the_confusing_part.log</span>
+                </div>
+
+                <div class="file-item clickable" data-file="q-001">
+                    <span class="file-icon">?</span>
+                    <span class="file-name">who_were_you.txt</span>
+                </div>
+                
+                <div class="file-item clickable" data-file="q-002">
+                    <span class="file-icon">?</span>
+                    <span class="file-name">did_any_of_it_mean_anything.txt</span>
+                </div>
+                
+                <div class="file-item clickable" data-file="q-003">
+                    <span class="file-icon">?</span>
+                    <span class="file-name">can_you_even_read_this.txt</span>
+                </div>
+
+                <div class="file-item clickable" data-file="id-001">
+                    <span class="file-icon">@</span>
+                    <span class="file-name">voice_one.sys</span>
+                </div>
+                
+                <div class="file-item clickable" data-file="id-002">
+                    <span class="file-icon">@</span>
+                    <span class="file-name">voice_two.sys</span>
+                </div>
+                
+                <div class="file-item clickable" data-file="id-003">
+                    <span class="file-icon">@</span>
+                    <span class="file-name">voice_three.sys</span>
                 </div>
                 
                 <div class="file-item clickable error-file" data-file="truth">
-                    <span class="file-icon">🔒</span>
-                    <span class="file-name">truth.txt</span>
+                    <span class="file-icon">?</span>
+                    <span class="file-name">truth.doc</span>
                 </div>
             </div>
         </section>
 
-        <!-- File Viewer -->
+        <!-- View -->
         <section id="fileViewer" class="section hidden">
             <div class="viewer-header">
-                <button id="backBtn" class="back-button">[ BACK ]</button>
+                <button id="backBtn" class="back-button">< back</button>
                 <h3 id="viewerTitle"></h3>
             </div>
             <div id="fileContent" class="file-content"></div>
         </section>
 
-        <!-- System Corruption -->
+        <!-- Breakdown -->
         <section id="systemCorruption" class="section hidden">
             <div class="corruption-container">
                 <div class="terminal-small">
-                    <div class="terminal-line" id="corruptionLine1">Scanning archive...</div>
+                    <div class="terminal-line" id="corruptionLine1">reading archive...</div>
                     <div class="terminal-line" id="corruptionLine2"></div>
                     <div class="terminal-line" id="corruptionLine3"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Cosmic Memory Chamber -->
+        <!-- Memories -->
         <section id="memoryChamber" class="section hidden">
             <div class="chamber-header">
-                <h2>MEMORY CHAMBER</h2>
-                <p>collect the pieces. understand the whole.</p>
+                <h2>gathering pieces</h2>
+                <p>click them. all of them.</p>
             </div>
-            <div id="memorySpace" class="memory-space">
-                <!-- Floating memories will be added here -->
-            </div>
+            <div id="memorySpace" class="memory-space"></div>
             <div id="memoryCounter" class="memory-counter"></div>
         </section>
 
-        <!-- Final Choice -->
+        <!-- Choose -->
         <section id="finalChoice" class="section hidden">
             <div class="choice-container">
-                <p class="choice-question">what do you do?</p>
+                <p class="choice-question">what now</p>
                 <div class="choice-buttons">
-                    <button id="keepSearchingBtn" class="choice-button">[ KEEP SEARCHING ]</button>
-                    <button id="letGoBtn" class="choice-button">[ LET GO ]</button>
+                    <button id="keepSearchingBtn" class="choice-button">keep searching</button>
+                    <button id="letGoBtn" class="choice-button">let go</button>
+                    <button id="keepSpiralingBtn" class="choice-button">keep spiraling</button>
                 </div>
             </div>
         </section>
 
-        <!-- Search Loop -->
+        <!-- Search Again -->
         <section id="searchLoop" class="section hidden">
             <div class="search-container">
                 <div class="terminal-small">
-                    <div class="terminal-line" id="searchLine1">Searching...</div>
+                    <div class="terminal-line" id="searchLine1">looking...</div>
                     <div class="terminal-line" id="searchLine2"></div>
                     <div class="terminal-line" id="searchLine3"></div>
                     <div class="terminal-line" id="searchLine4"></div>
                 </div>
-                <button id="searchReturnBtn" class="action-button" style="margin-top: 40px;">[ RETURN ]</button>
+                <button id="searchReturnBtn" class="action-button" style="margin-top: 40px;">return</button>
             </div>
         </section>
 
-        <!-- Final Report -->
+        <!-- Error Screen -->
+        <section id="errorScreen" class="section hidden">
+            <div class="search-container">
+                <div class="terminal-small">
+                    <div class="terminal-line" id="errorLine1">accessing...</div>
+                    <div class="terminal-line" id="errorLine2"></div>
+                    <div class="terminal-line" id="errorLine3"></div>
+                </div>
+                <button id="errorReturnBtn" class="action-button" style="margin-top: 40px;">return</button>
+            </div>
+        </section>
+
+        <!-- Spiral Screen -->
+        <section id="spiralScreen" class="section hidden">
+            <div class="spiral-container">
+                <div id="spiralContent" class="spiral-content"></div>
+                <button id="spiralReturnBtn" class="action-button" style="margin-top: 40px;">i understand</button>
+            </div>
+        </section>
+
+        <!-- End -->
         <section id="finalReport" class="section hidden">
             <div class="report-container">
-                <h2>[ARCHIVE COMPLETE]</h2>
+                <h2>done</h2>
                 <div class="report-content">
-                    <p>I don't have the answers.</p>
-                    <p>I'm tired of looking for them.</p>
-                    <p>So I'm letting this go.</p>
+                    <p>i dont have answers.</p>
+                    <p>never did.</p>
+                    <p>got tired of looking.</p>
                     <p class="report-spacing"></p>
-                    <p>Not because it didn't matter.</p>
-                    <p>Not because I stopped caring.</p>
-                    <p class="report-highlight">But because I deserve peace more than I deserve another mystery.</p>
+                    <p>its not that it didnt matter.</p>
+                    <p>its not that i didnt care.</p>
+                    <p class="report-highlight">its that i matter more to myself than any mystery ever will.</p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Scripts -->
     <script src="js/particles.js"></script>
     <script src="js/boot.js"></script>
     <script src="js/archive.js"></script>
