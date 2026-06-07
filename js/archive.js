@@ -197,7 +197,7 @@ function playSound(path) {
 
 let archive;
 window.addEventListener('load', () => {
-    if (bootComplete) {
+    if (window.bootComplete) {
         archive = new Archive();
     } else {
         setTimeout(() => {
