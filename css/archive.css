@@ -1,0 +1,230 @@
+.explorer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--red-accent);
+    padding-bottom: 10px;
+}
+
+.explorer-header h2 {
+    color: var(--gold-accent);
+    font-size: 1.2em;
+    text-shadow: 0 0 10px var(--glow-gold);
+}
+
+.explorer-tabs {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.explorer-tabs .tab {
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.explorer-tabs .tab.active {
+    color: var(--red-accent);
+}
+
+.explorer-tabs .close {
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+/* File Explorer */
+#fileExplorer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.file-tree {
+    width: 90%;
+    max-width: 700px;
+    background: var(--terminal-bg);
+    border: 2px solid var(--red-accent);
+    border-radius: 8px;
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px var(--glow-red), inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.file-tree::-webkit-scrollbar {
+    width: 8px;
+}
+
+.file-tree::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.file-tree::-webkit-scrollbar-thumb {
+    background: var(--red-accent);
+    border-radius: 4px;
+}
+
+.file-tree::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-accent);
+}
+
+.folder-item {
+    margin: 15px 0;
+}
+
+.folder-icon {
+    margin-right: 8px;
+    font-size: 1.1em;
+}
+
+.folder-name {
+    color: var(--gold-accent);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--glow-gold);
+}
+
+.subfolder {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.file-item {
+    margin: 8px 0;
+    padding: 8px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.file-item.clickable {
+    cursor: pointer;
+}
+
+.file-item.clickable:hover {
+    color: var(--red-accent);
+    text-shadow: 0 0 10px var(--glow-red);
+    transform: translateX(5px);
+}
+
+.file-icon {
+    font-size: 1em;
+}
+
+.file-name {
+    font-size: 0.95em;
+}
+
+.file-item.error-file {
+    color: var(--error-red);
+}
+
+.file-item.error-file:hover {
+    text-shadow: 0 0 15px rgba(255, 102, 102, 0.7);
+}
+
+/* File Viewer */
+#fileViewer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.viewer-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 700px;
+}
+
+.back-button {
+    padding: 8px 16px;
+    background: var(--red-accent);
+    color: var(--dark-bg);
+    border: 1px solid var(--red-accent);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--gold-accent);
+    border-color: var(--gold-accent);
+}
+
+#viewerTitle {
+    color: var(--gold-accent);
+    flex: 1;
+}
+
+.file-content {
+    width: 90%;
+    max-width: 700px;
+    background: var(--terminal-bg);
+    border: 2px solid var(--red-accent);
+    border-radius: 8px;
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px var(--glow-red), inset 0 0 20px rgba(0, 0, 0, 0.8);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 0.95em;
+}
+
+.file-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.file-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.file-content::-webkit-scrollbar-thumb {
+    background: var(--red-accent);
+    border-radius: 4px;
+}
+
+.file-content::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-accent);
+}
+
+/* Glitch effect */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.glitch {
+    animation: glitch 0.15s infinite;
+}
+
+@media (max-width: 768px) {
+    .file-tree {
+        max-width: 95%;
+        padding: 15px;
+    }
+    
+    .file-content {
+        max-width: 95%;
+        padding: 15px;
+    }
+}

@@ -1,0 +1,318 @@
+/* Questions Container */
+.questions-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.questions-container.hidden {
+    display: none;
+}
+
+.floating-question {
+    position: absolute;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    opacity: 0;
+    pointer-events: none;
+    text-shadow: 0 0 10px var(--glow-red);
+    animation: float-up 3s linear forwards;
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 0.6;
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) translateX(var(--tx, 0));
+    }
+}
+
+/* System Corruption */
+.corruption-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.terminal-small {
+    color: var(--text-secondary);
+}
+
+.terminal-line {
+    margin: 8px 0;
+}
+
+/* Cosmic Memory Chamber */
+#memoryChamber {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.chamber-header {
+    text-align: center;
+    margin-bottom: 30px;
+    z-index: 15;
+}
+
+.chamber-header h2 {
+    font-size: 2em;
+    color: var(--gold-accent);
+    text-shadow: 0 0 20px var(--glow-gold);
+    margin-bottom: 10px;
+}
+
+.chamber-header p {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95em;
+}
+
+.memory-space {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(20, 20, 20, 0.5) 0%, rgba(10, 10, 10, 0.8) 100%);
+    border: 2px solid rgba(212, 165, 116, 0.3);
+    border-radius: 10px;
+    box-shadow: inset 0 0 40px rgba(212, 165, 116, 0.1), 0 0 40px rgba(212, 165, 116, 0.2);
+    overflow: hidden;
+    z-index: 14;
+}
+
+.memory-item {
+    position: absolute;
+    padding: 12px 20px;
+    background: rgba(212, 165, 116, 0.1);
+    border: 1px solid var(--gold-accent);
+    border-radius: 4px;
+    color: var(--gold-accent);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px var(--glow-gold);
+    user-select: none;
+    animation: float-memory 6s ease-in-out infinite;
+}
+
+.memory-item:hover {
+    background: rgba(212, 165, 116, 0.2);
+    box-shadow: 0 0 25px var(--glow-gold);
+    transform: scale(1.05);
+}
+
+@keyframes float-memory {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-20px) translateX(-20px); }
+    50% { transform: translateY(20px) translateX(20px); }
+    75% { transform: translateY(-10px) translateX(15px); }
+}
+
+.memory-collected {
+    animation: collect-memory 0.6s ease-out forwards !important;
+}
+
+@keyframes collect-memory {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.1) translateY(-100px);
+        opacity: 0;
+    }
+}
+
+.memory-counter {
+    margin-top: 30px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    z-index: 15;
+}
+
+.memory-counter.complete {
+    color: var(--gold-accent);
+    text-shadow: 0 0 15px var(--glow-gold);
+    animation: pulse 0.6s ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Final Choice */
+#finalChoice {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.choice-container {
+    text-align: center;
+    z-index: 15;
+}
+
+.choice-question {
+    font-size: 1.3em;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    text-transform: lowercase;
+    font-style: italic;
+}
+
+.choice-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.choice-button {
+    padding: 15px 30px;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--dark-bg);
+    background: var(--red-accent);
+    border: 2px solid var(--red-accent);
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px var(--glow-red);
+}
+
+.choice-button:hover {
+    background: var(--gold-accent);
+    border-color: var(--gold-accent);
+    box-shadow: 0 0 30px var(--glow-gold);
+    transform: scale(1.05);
+}
+
+.choice-button:active {
+    transform: scale(0.98);
+}
+
+/* Search Loop */
+#searchLoop {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container {
+    text-align: center;
+    z-index: 15;
+}
+
+.search-container .terminal-small {
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+/* Final Report */
+#finalReport {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.report-container {
+    text-align: center;
+    max-width: 600px;
+    z-index: 15;
+}
+
+.report-container h2 {
+    color: var(--red-accent);
+    font-size: 1.8em;
+    margin-bottom: 40px;
+    text-shadow: 0 0 20px var(--glow-red);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.report-content {
+    color: var(--text-primary);
+    font-size: 1.1em;
+    line-height: 2em;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.report-content p {
+    margin: 15px 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.report-content p:nth-child(1) { animation-delay: 0.3s; }
+.report-content p:nth-child(2) { animation-delay: 0.6s; }
+.report-content p:nth-child(3) { animation-delay: 0.9s; }
+.report-content p:nth-child(4) { animation-delay: 1.1s; }
+.report-content p:nth-child(5) { animation-delay: 1.4s; }
+.report-content p:nth-child(6) { animation-delay: 1.7s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.report-spacing {
+    height: 20px;
+}
+
+.report-highlight {
+    color: var(--gold-accent);
+    font-weight: bold;
+    text-shadow: 0 0 15px var(--glow-gold);
+    font-size: 1.15em;
+}
+
+@media (max-width: 768px) {
+    .memory-space {
+        height: 300px;
+    }
+    
+    .choice-buttons {
+        gap: 15px;
+    }
+    
+    .choice-button {
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+    
+    .report-content {
+        font-size: 1em;
+        line-height: 1.8em;
+    }
+}

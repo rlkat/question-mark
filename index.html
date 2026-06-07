@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>?</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/terminal.css">
+    <link rel="stylesheet" href="css/archive.css">
+    <link rel="stylesheet" href="css/cosmic.css">
+</head>
+<body>
+    <!-- Starfield -->
+    <div id="starfield" class="starfield"></div>
+    
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Questions Container (hidden initially) -->
+    <div id="questionsContainer" class="questions-container hidden"></div>
+    
+    <!-- Main Container -->
+    <div id="mainContainer" class="container">
+        <!-- Boot Terminal -->
+        <section id="bootTerminal" class="section boot-terminal active">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span class="terminal-button red"></span>
+                    <span class="terminal-button yellow"></span>
+                    <span class="terminal-button green"></span>
+                </div>
+                <div class="terminal-content">
+                    <div class="terminal-line">$ SYSTEM INITIALIZING...</div>
+                    <div class="terminal-line" id="bootLine1"></div>
+                    <div class="terminal-line" id="bootLine2"></div>
+                    <div class="terminal-line" id="bootLine3"></div>
+                    <div class="terminal-line" id="bootLine4"></div>
+                    <div class="terminal-line" id="bootLine5"></div>
+                    <div class="terminal-line cursor" id="bootCursor"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open Archive Button -->
+        <section id="openArchiveSection" class="section hidden">
+            <div class="button-container">
+                <button id="openArchiveBtn" class="action-button">[ OPEN ARCHIVE ]</button>
+            </div>
+        </section>
+
+        <!-- File Explorer -->
+        <section id="fileExplorer" class="section hidden">
+            <div class="explorer-header">
+                <h2>ARCHIVE_STRUCTURE.exe</h2>
+                <div class="explorer-tabs">
+                    <span class="tab active">Tree View</span>
+                    <span class="close">×</span>
+                </div>
+            </div>
+            <div class="file-tree" id="fileTree">
+                <div class="folder-item">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-name">conversations/</span>
+                    <div class="subfolder">
+                        <div class="file-item clickable" data-file="conv-001">
+                            <span class="file-icon">📄</span>
+                            <span class="file-name">early_connection.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="conv-002">
+                            <span class="file-icon">📄</span>
+                            <span class="file-name">building_trust.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="conv-003">
+                            <span class="file-icon">📄</span>
+                            <span class="file-name">confusing_moments.txt</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="folder-item">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-name">questions/</span>
+                    <div class="subfolder">
+                        <div class="file-item clickable" data-file="q-001">
+                            <span class="file-icon">❓</span>
+                            <span class="file-name">were_you_real.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="q-002">
+                            <span class="file-icon">❓</span>
+                            <span class="file-name">did_you_care.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="q-003">
+                            <span class="file-icon">❓</span>
+                            <span class="file-name">was_it_real.txt</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="folder-item">
+                    <span class="folder-icon">📁</span>
+                    <span class="folder-name">identity/</span>
+                    <div class="subfolder">
+                        <div class="file-item clickable" data-file="id-001">
+                            <span class="file-icon">👤</span>
+                            <span class="file-name">account_001.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="id-002">
+                            <span class="file-icon">👤</span>
+                            <span class="file-name">account_002.txt</span>
+                        </div>
+                        <div class="file-item clickable" data-file="id-003">
+                            <span class="file-icon">👤</span>
+                            <span class="file-name">account_003.txt</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="file-item clickable error-file" data-file="truth">
+                    <span class="file-icon">🔒</span>
+                    <span class="file-name">truth.txt</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- File Viewer -->
+        <section id="fileViewer" class="section hidden">
+            <div class="viewer-header">
+                <button id="backBtn" class="back-button">[ BACK ]</button>
+                <h3 id="viewerTitle"></h3>
+            </div>
+            <div id="fileContent" class="file-content"></div>
+        </section>
+
+        <!-- System Corruption -->
+        <section id="systemCorruption" class="section hidden">
+            <div class="corruption-container">
+                <div class="terminal-small">
+                    <div class="terminal-line" id="corruptionLine1">Scanning archive...</div>
+                    <div class="terminal-line" id="corruptionLine2"></div>
+                    <div class="terminal-line" id="corruptionLine3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cosmic Memory Chamber -->
+        <section id="memoryChamber" class="section hidden">
+            <div class="chamber-header">
+                <h2>MEMORY CHAMBER</h2>
+                <p>collect the pieces. understand the whole.</p>
+            </div>
+            <div id="memorySpace" class="memory-space">
+                <!-- Floating memories will be added here -->
+            </div>
+            <div id="memoryCounter" class="memory-counter"></div>
+        </section>
+
+        <!-- Final Choice -->
+        <section id="finalChoice" class="section hidden">
+            <div class="choice-container">
+                <p class="choice-question">what do you do?</p>
+                <div class="choice-buttons">
+                    <button id="keepSearchingBtn" class="choice-button">[ KEEP SEARCHING ]</button>
+                    <button id="letGoBtn" class="choice-button">[ LET GO ]</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Loop -->
+        <section id="searchLoop" class="section hidden">
+            <div class="search-container">
+                <div class="terminal-small">
+                    <div class="terminal-line" id="searchLine1">Searching...</div>
+                    <div class="terminal-line" id="searchLine2"></div>
+                    <div class="terminal-line" id="searchLine3"></div>
+                    <div class="terminal-line" id="searchLine4"></div>
+                </div>
+                <button id="searchReturnBtn" class="action-button" style="margin-top: 40px;">[ RETURN ]</button>
+            </div>
+        </section>
+
+        <!-- Final Report -->
+        <section id="finalReport" class="section hidden">
+            <div class="report-container">
+                <h2>[ARCHIVE COMPLETE]</h2>
+                <div class="report-content">
+                    <p>I don't have the answers.</p>
+                    <p>I'm tired of looking for them.</p>
+                    <p>So I'm letting this go.</p>
+                    <p class="report-spacing"></p>
+                    <p>Not because it didn't matter.</p>
+                    <p>Not because I stopped caring.</p>
+                    <p class="report-highlight">But because I deserve peace more than I deserve another mystery.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/boot.js"></script>
+    <script src="js/archive.js"></script>
+    <script src="js/memories.js"></script>
+    <script src="js/progress.js"></script>
+</body>
+</html>
